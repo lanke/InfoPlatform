@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-from infoPlatform.models import Profile,ClassInfo,FriendInfo
+from infoPlatform.models import Profile,ClassInfo,FriendInfo,FriendValidation
 # Register your models here.
 
 # Define an inline admin descriptor for Profile model
@@ -21,3 +21,4 @@ admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(ClassInfo)
 admin.site.register(FriendInfo)
+admin.site.register(FriendValidation)

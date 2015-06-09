@@ -38,3 +38,23 @@ class FriendInfo(models.Model):
 
 	def __unicode__(self):
 		return self.user.username+"---"+self.userFriend.username
+
+#好友验证消息
+class FriendValidation(models.Model):
+
+	PASS_TYPE_STATE=(('0',"未处理"),('1','通过'),('2','不通过'))
+	requestUser=models.ForeignKey(User,related_name='requestUser')
+	dealUser=models.ForeignKey(User,related_name='dealUser')
+	validatonInfo=models.CharField(max_length="200",blank=True)
+	requestTime=models.DateTimeField(auto_now_add=True)
+	dealTime=models.DateTimeField(auto_now=True)
+	passType=models.CharField(max_length=1,choices=PASS_TYPE_STATE,default="0")
+
+	def __unicode__(self):
+		return self.requestUser.username+"---"+self.dealUser.username
+
+
+
+
+
+

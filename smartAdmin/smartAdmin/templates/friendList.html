@@ -9,26 +9,7 @@
 		</h1>
 	</div>
 	<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-		<ul id="sparks" class="">
-			<li class="sparks-info">
-				<h5> My Income <span class="txt-color-blue">$47,171</span></h5>
-				<div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-					1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-				</div>
-			</li>
-			<li class="sparks-info">
-				<h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-				<div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-					110,150,300,130,400,240,220,310,220,300, 270, 210
-				</div>
-			</li>
-			<li class="sparks-info">
-				<h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-				<div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-					110,150,300,130,400,240,220,310,220,300, 270, 210
-				</div>
-			</li>
-		</ul>
+		
 	</div>
 </div>
 
@@ -59,6 +40,25 @@
 				<header>
 					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 					<h2>Standard Data Tables1 </h2>
+					<div class="widget-toolbar">
+						
+						<div class="btn-group">
+							<button class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+								dropdown <i class="fa fa-caret-down"></i>
+							</button>
+							<ul class="dropdown-menu pull-right">
+								<li>
+									<a href="#newfriend">添加好友</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">Option 2</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);">Option 3</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</header>
 
 				<!-- widget div-->
@@ -84,6 +84,7 @@
 									<th data-hide="phone,tablet"><i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i> Email</th>
 									<th data-hide="phone,tablet">Gender</th>
 									<th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Birthday</th>
+									<th data-hide="phone,tablet"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i> Options</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -189,29 +190,42 @@
         // translations for datatables
        
 
+			
 			$('#dt_basic').dataTable({
 				// "oLanguage": oLanguages,
-       			 "bFilter": true,
-        		"aLengthMenu": [[25, 50, 100, 200], [25, 50, 100, 200]],
-        		"iDisplayLength" : 25,
-        		"aaSorting": [[ 0, "desc" ]],
+
+				"dom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f>>"+
+					"t"+
+					"<'dt-toolbar-footer'<'col-sm-8	  hidden-xs'i><'col-xs-4 col-sm-1'l><'col-xs-8 col-sm-3'p>>",
+					
+       			 "bFilter": false,
+        		"aLengthMenu": [[10, 20, 50, 100], [10, 20, 50, 100]],
+        		"iDisplayLength" : 10,
+        		"aaSorting": [[ 0, "asc" ]],
        	 		"bAutoWidth": true,
-        		"aoColumns": [
-                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                         { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                          { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                           { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                           { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                           { "bSortable": true, "bSearchable": true, "sClass": "center" },
-                        ],
-       	 	"bProcessing": true,
+       	 		
        	 	"bServerSide": true,
         	"bStateSave": true,
-        	"sAjaxSource": USERS_LIST_JSON_URL
-				
+        	"sAjaxSource": USERS_LIST_JSON_URL,
+        	 "aoColumns": [
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        { "bSortable": true, "bSearchable": true, "sClass": "center" },
+                        {"render":function(odata){
+                        	return '<input class="btn btn-success btn-xs" type="button" value="modify">'
+                        			+
+                        			'<input class="btn btn-danger btn-xs" type="button" value="delete">'
+
+                        }},
+                        ],
+        					
 			});
 
+		//$("#dt_basic .dt-toolbar").html('<input class="btn btn-success btn-xs" type="button" value="modify">');
 			
 
 		/* END BASIC */
