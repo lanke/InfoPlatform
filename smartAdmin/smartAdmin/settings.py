@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'infoPlatform',
+    'groupManage',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,17 +80,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+LOGIN_REDIRECT_URL='/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CKEDITOR_UPLOAD_PATH = "article_images"
-
+#所有以‘/static/’开头的URL都会指向STATIC_ROOT所指向的路径
 STATIC_URL = '/static/'
+#所有的文件会依据STATIC_ROOT被收集到/smartAdmin/static 文件夹当中去
 STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static')
-LOGIN_REDIRECT_URL='/'
+#额外的指明collectstatic应该去搜索的路径，路径下得所有static文件夹和文件都会被收集到STATIC_ROOT当中去
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
