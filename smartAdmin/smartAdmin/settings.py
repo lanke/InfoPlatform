@@ -1,3 +1,4 @@
+#coding=utf-8
 """
 Django settings for smartAdmin project.
 
@@ -25,7 +26,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#指明template的源文件都放在哪里
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates'),
 )

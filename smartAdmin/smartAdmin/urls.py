@@ -4,10 +4,10 @@ from smartAdmin import views
 from django.views.generic import TemplateView
 from infoPlatform.views import FriendListJson,UsersListJson,Invite,getNotify,acceptFriendInvite,rejectFriendInvite,UnfriendListJson
 
-
 urlpatterns = patterns('',
 
    		url(r'^admin/', include(admin.site.urls)),
+        url(r'^group/',include('groupManage.urls')),
 
     	url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     	url(r'^dashboard$', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
