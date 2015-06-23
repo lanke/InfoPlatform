@@ -1,3 +1,7 @@
+<!-- Bread crumb is created dynamically -->
+<!-- row -->
+
+<!-- end row -->
 
 <!-- widget grid -->
 <section id="widget-grid" class="">
@@ -24,9 +28,9 @@
 
 				-->
 				<header>
-                   <h2><a href="#group"> 我的小组话题 </a></h2>
+                   <h2><a href="#group"> 我的小组话题 </a>> <a href="#ajax/forum-topic.html">{{ group.groupName }} </a></h2>
 					<div class="widget-toolbar">
-                        <a href="#newfriend">添加好友</a>
+                        <a href="#newfriend"><span class="glyphicon glyphicon-plus"></span>发言</a>
 
 					</div>
 				</header>
@@ -46,6 +50,8 @@
 
 
 
+
+<!-- row -->
 <div class="row">
 
     <div class="col-sm-12">
@@ -54,7 +60,8 @@
 
             <table class="table table-striped table-forum">
                 <thead>
-
+                <tr>
+                </tr>
                 </thead>
                 <tbody>
 
@@ -71,7 +78,7 @@
                             <a href="javascript:void(0);">{{ item.replyCount }}</a>
                         </td>
                         <td class="text-center hidden-xs hidden-sm">
-                            <a href="#group/{{ item.group.id }}">{{ item.group.groupName }}</a>
+                            <a href="javascript:void(0);">{{ item.group.groupName }}</a>
                         </td>
                         <td class="hidden-xs hidden-sm">
                             <a href="javascript:void(0);">{{ item.creatTime|timesince }}</a>
@@ -101,6 +108,8 @@
     </div>
 
 </div>
+
+<!-- end row -->
 
 
 
@@ -134,13 +143,12 @@
 
 </section>
 
-<!-- end row -->
-
 <!-- row -->
 
 <div class="row">
 
     <!-- a blank row to get started -->
+
 </div>
 
 <!-- end row -->

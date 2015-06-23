@@ -26,6 +26,11 @@ def userGroupDiscuss(request):
 
 	return render_to_response('groupDiscuss.html', locals(), RequestContext(request))
 
+def group(request,groupId):
+	group=Group.objects.get(pk=groupId)
+	groupDiscussList=GroupDiscuss.objects.filter(group=group)
+	return render_to_response('group.html', locals(), RequestContext(request))
+
 def topic(request,topicId):
 	topic=GroupDiscuss.objects.get(pk=topicId)
 	replyList=ReplyDiscuss.objects.filter(groupDisscuss_id=topicId)
