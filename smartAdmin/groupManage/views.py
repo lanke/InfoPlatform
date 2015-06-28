@@ -44,7 +44,6 @@ def postReply(request,topicId):
 		return render_to_response('topic.html',locals(),RequestContext(request))
 	if request.POST["shtml"]:
 		shtml=request.POST["shtml"]
-		print shtml
 		reply=ReplyDiscuss(groupDisscuss=topic,type=1,content=shtml,replyUser=user,delFlag="0")
 		reply.save()
 		print reply
@@ -54,4 +53,17 @@ def postReply(request,topicId):
 		replyList=ReplyDiscuss.objects.filter(groupDisscuss_id=topicId)
 		return render_to_response('topic.html',locals(),RequestContext(request))
 
-
+@csrf_exempt
+def postTopic(request,groupId):
+	group=Group.objects.get(pk=groupId)
+	user=request.user
+	if request.method=='POST':
+		shtm=''
+		if request.POST.has_key('shtml') and request.POST.has_key('title'):
+			shtml=request.POST['shtml']
+			title=request.POST['title']
+			topic=GroupDiscuss(group=group,type='1',title=title,content=shtml,creatUser=user)
+			topic.save()
+			return render_to_response('topic.html',locals(),RequestContext(request))
+	else :
+		return render_to_response('postTopic.html',locals(),RequestContext(request))

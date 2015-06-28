@@ -87,11 +87,11 @@
         <div class="text-center">
             <ul class="pager">
                 {% if groupDiscussList.has_previous %}
-                    <li class="previous"><a href="#group/discuss?page={{ groupDiscussList.previous_page_number }}">&larr; Newer</a></li>
+                    <li class="previous"><a href="#group?page={{ groupDiscussList.previous_page_number }}">&larr; Newer</a></li>
                 {% endif %}
                 Page {{ groupDiscussList.number }} of {{ groupDiscussList.paginator.num_pages }}.
                 {% if groupDiscussList.has_next %}
-                    <li class="next"><a href="#group/discuss?page={{ groupDiscussList.next_page_number }}">Older &rarr;</a></li>
+                    <li class="next"><a href="#group?page={{ groupDiscussList.next_page_number }}">Older &rarr;</a></li>
                 {% endif %}
             </ul>
         </div>
